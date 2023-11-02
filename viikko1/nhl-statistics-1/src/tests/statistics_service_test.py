@@ -1,6 +1,7 @@
 import unittest
-from statistics_service import StatisticsService
+from statistics_service import StatisticsService, sort_by_points, sort_by_key
 from player import Player
+from sort_by import SortBy
 
 class PlayerReaderStub:
     def get_players(self):
@@ -38,3 +39,43 @@ class TestStatisticsService(unittest.TestCase):
         self.assertEqual(top_scorers[0].name, "Gretzky")
         self.assertEqual(top_scorers[1].name, "Lemieux")
         self.assertEqual(top_scorers[2].name, "Yzerman")
+
+    def test_top_sorts_by_points_without_parameter(self):
+        top_scorers = self.stats.top(3)
+        self.assertEqual(top_scorers[0].name, "Gretzky")
+        self.assertEqual(top_scorers[1].name, "Lemieux")
+        self.assertEqual(top_scorers[2].name, "Yzerman")
+
+    def test_top_sorts_by_goals_with_points_parameter(self):
+        top_scorers = self.stats.top(3, SortBy.POINTS)
+        self.assertEqual(top_scorers[0].name, "Gretzky")
+        self.assertEqual(top_scorers[1].name, "Lemieux")
+        self.assertEqual(top_scorers[2].name, "Yzerman")
+    
+    def test_top_sorts_by_goals_with_goals_parameter(self):
+        top_scorers = self.stats.top(3, SortBy.GOALS)
+        self.assertEqual(top_scorers[0].name, "Lemieux")
+        self.assertEqual(top_scorers[1].name, "Yzerman")
+        self.assertEqual(top_scorers[2].name, "Kurri")
+    
+    def test_top_sorts_by_goals_with_assists_parameter(self):
+        top_scorers = self.stats.top(3, SortBy.ASSISTS)
+        self.assertEqual(top_scorers[0].name, "Gretzky")
+        self.assertEqual(top_scorers[1].name, "Yzerman")
+        self.assertEqual(top_scorers[2].name, "Lemieux")    
+
+    def test_sort_by_points_returns_points(self):
+        player = Player("Semenko", "EDM", 4, 12)
+        self.assertEqual(sort_by_points(player), 16)
+
+    def test_sort_by_key_returns_points(self):
+        player = Player("Semenko", "EDM", 4, 12)
+        self.assertEqual(sort_by_key(player, SortBy.POINTS), 16)
+
+    def test_sort_by_key_returns_goals(self):
+        player = Player("Semenko", "EDM", 4, 12)
+        self.assertEqual(sort_by_key(player, SortBy.GOALS), 4)
+    
+    def test_sort_by_key_returns_assists(self):
+        player = Player("Semenko", "EDM", 4, 12)
+        self.assertEqual(sort_by_key(player, SortBy.ASSISTS), 12)
