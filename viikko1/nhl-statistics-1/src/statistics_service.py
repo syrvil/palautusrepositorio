@@ -5,12 +5,13 @@ def sort_by_points(player):
     return player.points
 
 def sort_by_key(player, sort_by):
-    if sort_by == SortBy.POINTS:
-        return player.points
-    elif sort_by == SortBy.GOALS:
+    if sort_by == SortBy.GOALS:
         return player.goals
-    else: #sort_by == SortBy.ASSISTS
+    elif sort_by == SortBy.ASSISTS:
         return player.assists
+    # else SortBy.POINTS: 
+    else:
+        return player.points 
 
 class StatisticsService:
     def __init__(self, reader):
