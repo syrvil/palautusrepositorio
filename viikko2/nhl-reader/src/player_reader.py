@@ -12,5 +12,5 @@ class PlayerReader:
             player = Player(player_dict)
             players.append(player)
         
-        return players 
+        return players
     
