@@ -1,14 +1,6 @@
-# Tuodaan resource.robot tiedosto, jossa on kaikki tarvittavat kirjastot ja muuttujat
-# Test Setup -kohdassa määritellään avainsant, joka suoritetaan ennen jokaista testiä
-# -> määrittety *** Keywords *** -kohdassa
-
 *** Settings ***
 Resource  resource.robot
 Test Setup  Create User And Input Login Command
-
-# Create User on toteutettu AppLibary.py tiedostossa
-# Input Login Command on toteutettu resource.robot tiedostossa kohda
-# *** Keywords ***
 
 *** Keywords ***
 Create User And Input Login Command

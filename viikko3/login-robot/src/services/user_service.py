@@ -49,7 +49,7 @@ class UserService:
             raise UserInputError("Username must only contain letters a-z")
         elif len(password) < 8:
             raise UserInputError("Password must have at least 8 characters")
-        elif re.match("^[a-z]+$", password) is not None:
+        elif password.isalpha():
             raise UserInputError("Password cannot contain olnly letters")
-
+        
         
