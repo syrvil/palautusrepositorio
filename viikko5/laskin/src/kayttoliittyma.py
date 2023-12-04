@@ -140,4 +140,7 @@ class Kumoa:
         self._syote = syote
 
     def suorita(self):
-        self._sovellus.kumoa()
+        edellinen_arvo = self._sovellus.arvo()
+        print(edellinen_arvo)
+        #self._sovellus.aseta_arvo(edellinen_arvo)
+        #self._sovellus.kumoa()
