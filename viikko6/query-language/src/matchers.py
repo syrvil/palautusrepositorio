@@ -58,3 +58,10 @@ class Or:
                 return True
 
         return False
+
+class OneOf:
+    def __init__(self, *teams):
+        self._teams = teams
+
+    def test(self, player):
+        return player.team in self._teams

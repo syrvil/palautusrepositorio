@@ -41,14 +41,46 @@ def main():
 
     query = QueryBuilder()
     #matcher = query.build()
+    
     #matcher = query.playsIn("NYR").build()    
-    matcher = (query
-        .playsIn("NYR")
-        .hasAtLeast(10, "goals")
-        .hasFewerThan(20, "goals")
+    
+    #matcher = (query
+    #    .playsIn("NYR")
+    #    .hasAtLeast(10, "goals")
+    #    .hasFewerThan(20, "goals")
+    #    .build()
+    #)
+
+    #m1 = (
+    #query
+    #    .playsIn("PHI")
+    #    .hasAtLeast(10, "assists")
+    #    .hasFewerThan(5, "goals")
+    #    .build()
+    #)
+    #m2 = (
+    #query
+    #    .playsIn("EDM")
+    #    .hasAtLeast(50, "points")
+    #    .build()
+    #)
+
+    #matcher = query.oneOf(m1, m2).build()
+
+    matcher = (
+        query
+        .oneOf(
+            query.playsIn("PHI")
+                .hasAtLeast(10, "assists")
+                .hasFewerThan(5, "goals")
+                .build(),
+            query.playsIn("EDM")
+                .hasAtLeast(50, "points")
+                .build()
+        )
         .build()
     )
-    
+
     # kutsutaan luokan statistics metodia matches, joka saa parametrikseen
     # matcher-olion. Metodi matches palauttaa listan pelaajista, jotka
     # täyttävät parametrina annetun ehtolausekkeen.
