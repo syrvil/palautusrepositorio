@@ -26,5 +26,6 @@ class KPSPelaajaVsPelaaja(KiviPaperiSakset):
 
     #    print("Kiitos!")
     #    print(tuomari)
-    #    def _onko_ok_siirto(self, siirto):
+    
+    #def _onko_ok_siirto(self, siirto):
     #    return siirto == "k" or siirto == "p" or siirto == "s"
