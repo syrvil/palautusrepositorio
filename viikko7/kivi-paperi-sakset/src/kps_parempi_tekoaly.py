@@ -8,9 +8,10 @@ class KPSParempiTekoaly(KiviPaperiSakset):
         self.tekoaly = TekoalyParannettu(10)
 
     def _toisen_siirto(self, _ensimmaisen_siirto):
+        ekan_siirto = _ensimmaisen_siirto
         tietokoneen_siirto = self.tekoaly.anna_siirto() 
         print(f"Tietokone valitsi: {tietokoneen_siirto}")
-        self.tekoaly.aseta_siirto(_ensimmaisen_siirto)
+        self.tekoaly.aseta_siirto(ekan_siirto)
         return tietokoneen_siirto
 
 #    def pelaa(self):
